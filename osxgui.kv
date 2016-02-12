@@ -1,0 +1,146 @@
+#kivy 1.0
+<OSXGuiWidget>
+	label_wid: console_label
+	cols: 1
+	BoxLayout:
+		size_hint_y:0.05
+        orientation: 'horizontal'
+        Label:
+        	size_hint_x: 0.2
+        	text:'PO Project Path'
+        TextInput:
+        	size_hint_x: 0.8
+			id: path_textinput
+			pos: self.pos
+			text: root.baseDirPath
+	
+	BoxLayout:
+		size_hint_y:0.05
+        orientation: 'horizontal'
+        Label:
+        	size_hint_x: 0.2
+        	text:'ipa file name'
+        TextInput:
+        	size_hint_x: 0.8
+			id: ipa_textinput
+			pos: self.pos
+			on_text: root.do_onText()
+	
+	BoxLayout:
+		size_hint_y:0.05
+        orientation: 'horizontal'
+        Label:
+        	size_hint_x: 0.2
+        	text:'major version'
+        TextInput:
+        	size_hint_x: 0.8
+			id: major_textinput
+			text: '602'
+			pos: self.pos
+			
+	BoxLayout:
+		size_hint_y:0.05
+        orientation: 'horizontal'
+        Label:
+        	size_hint_x: 0.2
+        	text:'ipa & plist path'
+        TextInput:
+        	size_hint_x: 0.8
+			id: dstpath_textinput
+			pos: self.pos
+			text: root.baseSmbPath
+	
+	BoxLayout:
+		size_hint_y:0.05
+        orientation: 'horizontal'
+        Label:
+        	size_hint_x: 0.2
+        	text:'html path'
+        TextInput:
+        	size_hint_x: 0.8
+			id: dsthtmlpath_textinput
+			text: root.baseHtmlPath
+			pos: self.pos
+			
+	BoxLayout:
+		size_hint_y:0.05
+        orientation: 'horizontal'
+        Label:
+        	size_hint_x: 0.2
+        	text:'version title'
+        TextInput:
+        	size_hint_x: 0.8
+			id: htmlTitle_textinput
+			text: 'HTML Version Title'
+			pos: self.pos
+			
+	ProgressBar:
+		size_hint_y:0.01
+		id: pb_progressbar
+		max:53235
+		value:0
+	
+	BoxLayout:
+		size_hint_y:0.1
+        orientation: 'horizontal'
+        Button:
+            size_hint_x: 0.2
+            id:btnStep1
+            pos_hint: {'x': 0}
+            text: 'svn update'
+            on_press: root.do_svnUpdate()
+        Button:
+            size_hint_x: 0.2
+            id:btnStep2
+            pos_hint: {'x': 0.2}
+            text: 'modify udefine.h'
+            on_press: root.do_modifyUdefine()
+        Button:
+            size_hint_x: 0.2
+            id:btnStep3
+            pos_hint: {'x': 0.4}
+            text: 'xcode clean'
+            on_press: root.do_xcodeclean()
+        Button:
+            size_hint_x: 0.2
+            id:btnStep3
+            pos_hint: {'x': 0.4}
+            text: 'xcode build'
+            on_press: root.do_xcodebuild()
+        Button:
+        	size_hint_x: 0.2
+        	id:btnStep4
+        	pos_hint:{'x':0.6}
+        	text: 'make ipa'
+        	on_press: root.do_makeipa()
+        Button:
+        	size_hint_x: 0.2
+        	id:btnStep5
+        	pos_hint:{'x':0.8}
+        	text: 'copy smb'
+        	on_press: root.do_copySMB()
+        Button:
+        	size_hint_x: 0.2
+        	id:btnStep5
+        	pos_hint:{'right':1}
+        	text: 'one shot'
+        	on_press: root.do_oneShot()
+        	
+    BoxLayout:
+    	size_hint_y:0.8
+		canvas.before:
+        	Color:
+            	rgba: .5, .5, .5, 1
+        	Rectangle:
+            	pos: self.pos
+            	size: self.size
+    	padding:10
+		Label:
+			multiline: 'ture'
+			text: 'svn Information\n'
+			halign: 'left'
+			valign: 'top'
+			id:console_label
+			text_size: self.size
+	
+    
